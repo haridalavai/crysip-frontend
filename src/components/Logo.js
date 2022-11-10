@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
@@ -19,7 +19,7 @@ export default function Logo({ disabledLink = false, sx }) {
 
   const logo = (
     <Box sx={{ width: 40, height: 40, ...sx }}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
+      {/* <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 512 512">
         <defs>
           <linearGradient id="BG1" x1="100%" x2="50%" y1="9.946%" y2="50%">
             <stop offset="0%" stopColor={PRIMARY_DARK} />
@@ -48,6 +48,43 @@ export default function Logo({ disabledLink = false, sx }) {
             d="M450 384c26.509 0 48-21.491 48-48s-21.491-48-48-48-48 21.491-48 48 21.491 48 48 48"
           />
         </g>
+      </svg> */}
+      <svg width="100%" height="100%" viewBox="0 0 326 371" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M139.756 43H296.357L324.762 0H117.289V8.98921L139.756 43Z" fill="url(#paint0_linear_34_10)" />
+        <path
+          d="M48.0194 170.106L121.211 59.1923L96.4709 18.7738L0.171339 164.705L6.35672 168.238L48.0194 170.106Z"
+          fill="url(#paint1_linear_34_10)"
+        />
+        <path
+          d="M142.659 327.524H299.643L325.376 370.524H120.506V364.541L142.659 327.524Z"
+          fill="url(#paint2_linear_34_10)"
+        />
+        <path
+          d="M47.0281 191.707L120.897 313.541L96.6999 356.566L0 197.076L5.36537 193.74L47.0281 191.707Z"
+          fill="url(#paint3_linear_34_10)"
+        />
+        <defs>
+          <linearGradient id="paint0_linear_34_10" x1="311" y1="10" x2="90" y2="359.5" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#4CE2EC" />
+            <stop offset="0.651042" stopColor="#843DB2" />
+            <stop offset="1" stopColor="#853DB3" />
+          </linearGradient>
+          <linearGradient id="paint1_linear_34_10" x1="311" y1="10" x2="90" y2="359.5" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#4CE2EC" />
+            <stop offset="0.651042" stopColor="#843DB2" />
+            <stop offset="1" stopColor="#853DB3" />
+          </linearGradient>
+          <linearGradient id="paint2_linear_34_10" x1="311" y1="10" x2="90" y2="359.5" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#4CE2EC" />
+            <stop offset="0.651042" stopColor="#843DB2" />
+            <stop offset="1" stopColor="#853DB3" />
+          </linearGradient>
+          <linearGradient id="paint3_linear_34_10" x1="311" y1="10" x2="90" y2="359.5" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#4CE2EC" />
+            <stop offset="0.651042" stopColor="#843DB2" />
+            <stop offset="1" stopColor="#853DB3" />
+          </linearGradient>
+        </defs>
       </svg>
     </Box>
   );

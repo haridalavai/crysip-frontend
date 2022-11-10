@@ -37,7 +37,6 @@ import { Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
 import Web3 from 'web3';
 // redux
-import { store, persistor } from './redux/store';
 // contexts
 import { SettingsProvider } from './contexts/SettingsContext';
 import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
@@ -68,8 +67,6 @@ ReactDOM.render(
   <AuthProvider>
     <Web3ReactProvider getLibrary={getLibrary}>
       <HelmetProvider>
-        <ReduxProvider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <SettingsProvider>
                 <CollapseDrawerProvider>
@@ -81,8 +78,7 @@ ReactDOM.render(
                 </CollapseDrawerProvider>
               </SettingsProvider>
             </LocalizationProvider>
-          </PersistGate>
-        </ReduxProvider>
+
       </HelmetProvider>
     </Web3ReactProvider>
   </AuthProvider>,
