@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
-import { useRef } from 'react';
-import Slider from 'react-slick';
+import PropTypes from "prop-types";
+import { m } from "framer-motion";
+import { useRef } from "react";
+import Slider from "react-slick";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Card, Button, Container, Typography } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { Box, Stack, Card, Button, Container, Typography } from "@mui/material";
 // _mock_
-import { _carouselsMembers } from '../../_mock';
+import { _carouselsMembers } from "../../_mock";
 // components
-import Image from '../../components/Image';
-import Iconify from '../../components/Iconify';
-import { CarouselArrows } from '../../components/carousel';
-import SocialsButton from '../../components/SocialsButton';
-import { MotionViewport, varFade } from '../../components/animate';
+import Image from "../../components/Image";
+import Iconify from "../../components/Iconify";
+import { CarouselArrows } from "../../components/carousel";
+import SocialsButton from "../../components/SocialsButton";
+import { MotionViewport, varFade } from "../../components/animate";
 
 // ----------------------------------------------------------------------
 
@@ -25,8 +25,8 @@ export default function AboutTeam() {
     arrows: false,
     slidesToShow: 4,
     centerMode: true,
-    centerPadding: '0px',
-    rtl: Boolean(theme.direction === 'rtl'),
+    centerPadding: "0px",
+    rtl: Boolean(theme.direction === "rtl"),
     responsive: [
       {
         breakpoint: 1279,
@@ -51,10 +51,31 @@ export default function AboutTeam() {
     carouselRef.current?.slickNext();
   };
 
+  const teamMembers = [
+    {
+      name: "Srihari D R",
+      role: "Co-Founder & CTO",
+      avatar: "/hari.png",
+      message: "CEO can suck it, I built it, I deserve to be at first.",
+    },
+    {
+      name: "Srihari D R",
+      role: "Co-Founder & CEO",
+      avatar: "/santhosh.png",
+      message: `If you need me,I will in that corner mostly be thinking about vaisnavi`,
+    },
+    {
+      name: "Srihari D R",
+      role: "Co-Founder & CPO",
+      avatar: "/chinmai.png",
+      message: "highly in demand among female community😎. Rich AF.",
+    },
+  ];
+
   return (
-    <Container component={MotionViewport} sx={{ pb: 10, textAlign: 'center' }}>
-      <m.div variants={varFade().inDown}>
-        <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary' }}>
+    <Container component={MotionViewport} sx={{ pb: 10, textAlign: "center" }}>
+      {/* <m.div variants={varFade().inDown}>
+        <Typography component="p" variant="overline" sx={{ mb: 2, color: "text.secondary" }}>
           Dream team
         </Typography>
       </m.div>
@@ -68,28 +89,24 @@ export default function AboutTeam() {
       <m.div variants={varFade().inUp}>
         <Typography
           sx={{
-            mx: 'auto',
+            mx: "auto",
             maxWidth: 630,
-            color: (theme) => (theme.palette.mode === 'light' ? 'text.secondary' : 'common.white'),
+            color: (theme) => (theme.palette.mode === "light" ? "text.secondary" : "common.white"),
           }}
         >
           Minimal will provide you support if you have any problems, our support team will reply within a day and we
           also have detailed documentation.
         </Typography>
-      </m.div>
+      </m.div> */}
 
-      <Box sx={{ position: 'relative' }}>
-        <CarouselArrows filled onNext={handleNext} onPrevious={handlePrevious}>
-          <Slider ref={carouselRef} {...settings}>
-            {_carouselsMembers.map((member) => (
-              <Box key={member.id} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
-                <MemberCard member={member} />
-              </Box>
-            ))}
-          </Slider>
-        </CarouselArrows>
+      <Box sx={{ position: "relative" }}>
+        {teamMembers.map((member) => (
+          <Box key={member.id} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
+            <MemberCard member={member} />
+          </Box>
+        ))}
       </Box>
-      <Button
+      {/* <Button
         variant="outlined"
         color="inherit"
         size="large"
@@ -97,7 +114,7 @@ export default function AboutTeam() {
         sx={{ mx: 'auto' }}
       >
         View all team members
-      </Button>
+      </Button> */}
     </Container>
   );
 }
@@ -113,20 +130,23 @@ MemberCard.propTypes = {
 };
 
 function MemberCard({ member }) {
-  const { name, role, avatar } = member;
+  const { name, role, avatar, message } = member;
 
   return (
     <Card key={name} sx={{ p: 1 }}>
       <Typography variant="subtitle1" sx={{ mt: 2, mb: 0.5 }}>
         {name}
       </Typography>
-      <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+      <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
         {role}
       </Typography>
       <Image alt={name} src={avatar} ratio="1/1" sx={{ borderRadius: 1.5 }} />
       <Stack alignItems="center" sx={{ mt: 2, mb: 1 }}>
-        <SocialsButton sx={{ color: 'action.active' }} />
+        <SocialsButton sx={{ color: "action.active" }} />
       </Stack>
+      <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
+        {message}
+      </Typography>
     </Card>
   );
 }

@@ -9,7 +9,7 @@ const SwapToCard = ({ currency, setCurrency, setPercent }) => {
   const [percentTo, setPercentTo] = useState();
   const theme = useTheme();
   return (
-    <Card sx={{ padding: "20px", boxShadow: "none", border: `0.5px solid ${theme.palette.secondary.main}` }}>
+    <Card sx={{ padding: "20px", border: `0.5px solid ${theme.palette.secondary.main}` }}>
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <TextField

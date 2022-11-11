@@ -40,7 +40,7 @@ const SwapFrom = ({
   };
 
   return (
-    <Card sx={{ padding: "20px", boxShadow: "none", border: `0.5px solid ${theme.palette.primary.main}` }}>
+    <Card sx={{ padding: "20px", boxShadow: "none", border: `` }}>
       <Grid container spacing={1} sx={{ alignItems: "flex-end" }}>
         <Grid item xs={12}>
           <TextField

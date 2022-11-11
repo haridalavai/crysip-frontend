@@ -93,6 +93,7 @@ export default function Router() {
       children: [
         { element: <HomePage />, index: true },
         { path: "about-us", element: <About /> },
+        { path: "roadmap", element: <RoadMap /> },
         { path: "contact-us", element: <Contact /> },
         { path: "faqs", element: <Faqs /> },
       ],
@@ -124,6 +125,7 @@ const CoinInfo = Loadable(lazy(() => import("../pages/dashboard/CoinInfo")));
 // MAIN
 const HomePage = Loadable(lazy(() => import("../pages/Home")));
 const About = Loadable(lazy(() => import("../pages/About")));
+const RoadMap = Loadable(lazy(() => import("../pages/RoadMap")));
 const Contact = Loadable(lazy(() => import("../pages/Contact")));
 const Faqs = Loadable(lazy(() => import("../pages/Faqs")));
 const ComingSoon = Loadable(lazy(() => import("../pages/ComingSoon")));

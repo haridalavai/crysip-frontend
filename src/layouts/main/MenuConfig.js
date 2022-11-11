@@ -33,6 +33,11 @@ const menuConfig = [
     icon: <Iconify icon={"eva:book-open-fill"} {...ICON_SIZE} />,
     path: PATH_PAGE.comingSoon,
   },
+  {
+    title: "Roadmap",
+    icon: <Iconify icon={"eva:book-open-fill"} {...ICON_SIZE} />,
+    path: PATH_PAGE.roadmap,
+  },
 ];
 
 export default menuConfig;

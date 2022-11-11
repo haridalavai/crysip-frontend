@@ -1,37 +1,39 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { TickerTape } from "react-ts-tradingview-widgets";
+
 // @mui
-import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, Typography } from '@mui/material';
+import { styled } from "@mui/material/styles";
+import { Box, Stack, AppBar, Toolbar, Typography } from "@mui/material";
 // hooks
-import { useWeb3React } from '@web3-react/core';
-import useOffSetTop from '../../../hooks/useOffSetTop';
-import useResponsive from '../../../hooks/useResponsive';
+import { useWeb3React } from "@web3-react/core";
+import useOffSetTop from "../../../hooks/useOffSetTop";
+import useResponsive from "../../../hooks/useResponsive";
 
 // utils
-import cssStyles from '../../../utils/cssStyles';
+import cssStyles from "../../../utils/cssStyles";
 // config
-import { HEADER, NAVBAR } from '../../../config';
+import { HEADER, NAVBAR } from "../../../config";
 // components
-import Logo from '../../../components/Logo';
-import Iconify from '../../../components/Iconify';
-import { IconButtonAnimate } from '../../../components/animate';
+import Logo from "../../../components/Logo";
+import Iconify from "../../../components/Iconify";
+import { IconButtonAnimate } from "../../../components/animate";
 //
-import Searchbar from './Searchbar';
-import WalletPopover from './WalletPopover';
+import Searchbar from "./Searchbar";
+import WalletPopover from "./WalletPopover";
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(AppBar, {
-  shouldForwardProp: (prop) => prop !== 'isCollapse' && prop !== 'isOffset' && prop !== 'verticalLayout',
+  shouldForwardProp: (prop) => prop !== "isCollapse" && prop !== "isOffset" && prop !== "verticalLayout",
 })(({ isCollapse, isOffset, verticalLayout, theme }) => ({
   ...cssStyles(theme).bgBlur(),
-  boxShadow: 'none',
+  boxShadow: "none",
   height: HEADER.MOBILE_HEIGHT,
   zIndex: theme.zIndex.appBar + 1,
-  transition: theme.transitions.create(['width', 'height'], {
+  transition: theme.transitions.create(["width", "height"], {
     duration: theme.transitions.duration.shorter,
   }),
-  [theme.breakpoints.up('lg')]: {
+  [theme.breakpoints.up("lg")]: {
     height: HEADER.DASHBOARD_DESKTOP_HEIGHT,
     width: `calc(100% - ${NAVBAR.DASHBOARD_WIDTH + 1}px)`,
     ...(isCollapse && {
@@ -41,7 +43,7 @@ const RootStyle = styled(AppBar, {
       height: HEADER.DASHBOARD_DESKTOP_OFFSET_HEIGHT,
     }),
     ...(verticalLayout && {
-      width: '100%',
+      width: "100%",
       height: HEADER.DASHBOARD_DESKTOP_OFFSET_HEIGHT,
       backgroundColor: theme.palette.background.default,
     }),
@@ -60,20 +62,20 @@ export default function DashboardHeader({ onOpenSidebar, isCollapse = false, ver
   const isOffset = useOffSetTop(HEADER.DASHBOARD_DESKTOP_HEIGHT) && !verticalLayout;
   const { activate, deactivate, active, chainId, account, error, library } = useWeb3React();
 
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive("up", "lg");
 
   return (
     <RootStyle isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
       <Toolbar
         sx={{
-          minHeight: '100% !important',
+          minHeight: "100% !important",
           px: { lg: 5 },
         }}
       >
         {isDesktop && verticalLayout && <Logo sx={{ mr: 2.5 }} />}
 
         {!isDesktop && (
-          <IconButtonAnimate onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
+          <IconButtonAnimate onClick={onOpenSidebar} sx={{ mr: 1, color: "text.primary" }}>
             <Iconify icon="eva:menu-2-fill" />
           </IconButtonAnimate>
         )}
@@ -82,12 +84,13 @@ export default function DashboardHeader({ onOpenSidebar, isCollapse = false, ver
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          <Typography variant="body2" sx={{ color: "text.secondary" }} noWrap>
             {account}
           </Typography>
           <WalletPopover />
         </Stack>
       </Toolbar>
+      <TickerTape colorTheme="dark" />
     </RootStyle>
   );
 }
