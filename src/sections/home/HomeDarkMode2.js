@@ -9,17 +9,18 @@ import { MotionViewport, varFade } from "../../components/animate";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled("div")(({ theme }) => ({
-  padding: theme.spacing(28, 0),
+  padding: theme.spacing(10, 0),
+  marginBottom: theme.spacing(10),
   backgroundColor: theme.palette.grey[900],
 }));
 
 const ContentStyle = styled("div")(({ theme }) => ({
   textAlign: "center",
   position: "relative",
-  marginBottom: theme.spacing(10),
+  marginTop: theme.spacing(10),
   [theme.breakpoints.up("md")]: {
     height: "100%",
-    marginBottom: 0,
+    marginBottom: 10,
     textAlign: "left",
     display: "inline-flex",
     flexDirection: "column",
@@ -52,25 +53,7 @@ export default function HomeDarkMode() {
           }}
         />
 
-        <Grid container spacing={5} direction="row-reverse" justifyContent="space-between">
-          <Grid item xs={12} md={7} sx={{ position: "relative" }}>
-            <m.div variants={varFade().inUp}>
-              <Image
-                sx={{
-                  backgroundColor: "common.white",
-                  padding: 4,
-                  borderRadius: 2,
-                  border: (theme) => `solid 4px ${theme.palette.padding}`,
-                }}
-                alt="light mode"
-                src="/multi_token_swap_flow.png"
-              />
-            </m.div>
-
-            {/* <Box component={m.div} variants={varFade().inDown} sx={{ top: 0, left: 0, position: "absolute" }}>
-              <Image alt="dark mode" src="https://minimal-assets-api.vercel.app/assets/images/home/darkmode.png" />
-            </Box> */}
-          </Grid>
+        <Grid container spacing={5} direction="row" justifyContent="space-between">
           <Grid item xs={12} md={4}>
             <ContentStyle>
               <m.div variants={varFade().inUp}>
@@ -96,6 +79,20 @@ export default function HomeDarkMode() {
                 </Button>
               </m.div>
             </ContentStyle>
+          </Grid>
+          <Grid item xs={12} md={7} sx={{ position: "relative" }}>
+            <m.div variants={varFade().inUp}>
+              <Image
+                sx={{
+                  backgroundColor: "common.white",
+                  padding: 4,
+                  borderRadius: 2,
+                  border: (theme) => `solid 4px ${theme.palette.padding}`,
+                }}
+                alt="light mode"
+                src="/multi_token_swap_flow.png"
+              />
+            </m.div>
           </Grid>
         </Grid>
       </Container>

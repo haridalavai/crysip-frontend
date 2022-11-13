@@ -56,49 +56,21 @@ export default function AboutTeam() {
       name: "Srihari D R",
       role: "Co-Founder & CTO",
       avatar: "/hari.png",
-      message: "CEO can suck it, I built it, I deserve to be at first.",
     },
     {
       name: "Srihari D R",
       role: "Co-Founder & CEO",
       avatar: "/santhosh.png",
-      message: `If you need me,I will in that corner mostly be thinking about vaisnavi`,
     },
     {
       name: "Srihari D R",
       role: "Co-Founder & CPO",
       avatar: "/chinmai.png",
-      message: "highly in demand among female community😎. Rich AF.",
     },
   ];
 
   return (
-    <Container component={MotionViewport} sx={{ pb: 10, textAlign: "center" }}>
-      {/* <m.div variants={varFade().inDown}>
-        <Typography component="p" variant="overline" sx={{ mb: 2, color: "text.secondary" }}>
-          Dream team
-        </Typography>
-      </m.div>
-
-      <m.div variants={varFade().inUp}>
-        <Typography variant="h2" sx={{ mb: 3 }}>
-          Great team is the key
-        </Typography>
-      </m.div>
-
-      <m.div variants={varFade().inUp}>
-        <Typography
-          sx={{
-            mx: "auto",
-            maxWidth: 630,
-            color: (theme) => (theme.palette.mode === "light" ? "text.secondary" : "common.white"),
-          }}
-        >
-          Minimal will provide you support if you have any problems, our support team will reply within a day and we
-          also have detailed documentation.
-        </Typography>
-      </m.div> */}
-
+    <Container>
       <Box sx={{ position: "relative" }}>
         {teamMembers.map((member) => (
           <Box key={member.id} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
@@ -106,15 +78,6 @@ export default function AboutTeam() {
           </Box>
         ))}
       </Box>
-      {/* <Button
-        variant="outlined"
-        color="inherit"
-        size="large"
-        endIcon={<Iconify icon={'ic:round-arrow-right-alt'} width={24} height={24} />}
-        sx={{ mx: 'auto' }}
-      >
-        View all team members
-      </Button> */}
     </Container>
   );
 }
@@ -130,7 +93,7 @@ MemberCard.propTypes = {
 };
 
 function MemberCard({ member }) {
-  const { name, role, avatar, message } = member;
+  const { name, role, avatar } = member;
 
   return (
     <Card key={name} sx={{ p: 1 }}>
@@ -144,9 +107,6 @@ function MemberCard({ member }) {
       <Stack alignItems="center" sx={{ mt: 2, mb: 1 }}>
         <SocialsButton sx={{ color: "action.active" }} />
       </Stack>
-      <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
-        {message}
-      </Typography>
     </Card>
   );
 }

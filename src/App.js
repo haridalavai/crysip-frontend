@@ -27,7 +27,7 @@ export default function App() {
                 <ProgressBarStyle />
                 <ChartStyle />
                 <Settings />
-                <Miniswap />
+                {/* <Miniswap /> */}
                 <ScrollToTop />
                 <Router />
               </MotionLazyContainer>

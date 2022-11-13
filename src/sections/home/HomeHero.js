@@ -33,6 +33,7 @@ const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(({ them
   margin: "auto",
   textAlign: "center",
   position: "relative",
+  color: theme.palette.common.white,
   paddingTop: theme.spacing(15),
   paddingBottom: theme.spacing(15),
   [theme.breakpoints.up("md")]: {
@@ -70,11 +71,7 @@ export default function HomeHero() {
   return (
     <MotionContainer>
       <RootStyle>
-        {/* <HeroOverlayStyle
-          alt="overlay"
-          src="https://minimal-assets-api.vercel.app/assets/overlay.svg"
-          variants={varFade().in}
-        /> */}
+        <HeroOverlayStyle alt="overlay" src="/overlay_hero.png" variants={varFade().in} />
 
         <HeroImgStyle
           alt="hero"
@@ -98,7 +95,7 @@ export default function HomeHero() {
             <m.div variants={varFade().inRight}>
               <Typography>
                 Crypot is a decentralized platform which enables basket Investment in Defi and facilitates multi token
-                swap in single transaction.
+                swap in a single go.
               </Typography>
             </m.div>
 

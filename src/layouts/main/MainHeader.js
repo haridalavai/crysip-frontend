@@ -83,7 +83,7 @@ export default function MainHeader() {
 
           {isDesktop && <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />}
 
-          <Button variant="contained" target="_blank" rel="noopener" href="/dashboard/app">
+          <Button variant="contained" href="/dashboard/app">
             Try Now
           </Button>
 

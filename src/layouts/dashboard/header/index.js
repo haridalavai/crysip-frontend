@@ -90,7 +90,6 @@ export default function DashboardHeader({ onOpenSidebar, isCollapse = false, ver
           <WalletPopover />
         </Stack>
       </Toolbar>
-      <TickerTape colorTheme="dark" />
     </RootStyle>
   );
 }
