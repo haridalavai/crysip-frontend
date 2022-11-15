@@ -83,8 +83,8 @@ export default function AboutWhat() {
                   color: (theme) => (theme.palette.mode === "light" ? "text.secondary" : "common.white"),
                 }}
               >
-                We are just a bunch of nerds people obsessed with
-                <br /> building products around blockchain, DeFi and Fintech. We are just awesome, especially our CTO.
+                We are a team of crypto enthusiasts who are passionate about the blockchain technology and
+                <br /> building products around blockchain, DeFi and Fintech.
               </Typography>
             </m.div>
 

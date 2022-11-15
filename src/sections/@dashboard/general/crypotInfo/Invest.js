@@ -26,15 +26,20 @@ const Invest = ({ id }) => {
   }, [active]);
 
   const handleInvest = async () => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const allowed = await checkAllowance(usdt, id, account);
-    console.log(allowed === "0");
+      const allowed = await checkAllowance(usdt, id, account);
+      console.log(allowed === "0");
 
-    if (allowed === "0") {
-      approve();
-    } else {
-      invest();
+      if (allowed === "0") {
+        approve();
+      } else {
+        invest();
+      }
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
     }
   };
 
@@ -52,18 +57,28 @@ const Invest = ({ id }) => {
   };
 
   const checkAllowance = async (token, spender, owner) => {
-    const isAllowed = await usdt.methods.allowance(owner, spender).call();
-    return isAllowed;
+    try {
+      const isAllowed = await usdt.methods.allowance(owner, spender).call();
+      return isAllowed;
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
   };
 
   const invest = async () => {
-    crypotContract.methods
-      .invest(library.utils.toWei(amount))
-      .send({ from: account })
-      .on("receipt", async (hash) => {
-        console.log("done");
-        setLoading(false);
-      });
+    try {
+      crypotContract.methods
+        .invest(library.utils.toWei(amount))
+        .send({ from: account })
+        .on("receipt", async (hash) => {
+          console.log("done");
+          setLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
   };
   return (
     <Card sx={{ padding: "20px" }}>

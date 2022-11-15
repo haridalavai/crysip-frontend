@@ -53,17 +53,17 @@ export default function AboutTeam() {
 
   const teamMembers = [
     {
-      name: "Srihari D R",
-      role: "Co-Founder & CTO",
-      avatar: "/hari.png",
-    },
-    {
-      name: "Srihari D R",
+      name: "Santhosh K S",
       role: "Co-Founder & CEO",
       avatar: "/santhosh.png",
     },
     {
       name: "Srihari D R",
+      role: "Co-Founder & CTO",
+      avatar: "/hari.png",
+    },
+    {
+      name: "Chinmai R",
       role: "Co-Founder & CPO",
       avatar: "/chinmai.png",
     },
@@ -71,7 +71,16 @@ export default function AboutTeam() {
 
   return (
     <Container>
-      <Box sx={{ position: "relative" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          // alignItems: "center",
+          flexWrap: "wrap",
+          justifyContent: "space-around",
+          width: "100%",
+        }}
+      >
         {teamMembers.map((member) => (
           <Box key={member.id} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
             <MemberCard member={member} />
@@ -96,14 +105,25 @@ function MemberCard({ member }) {
   const { name, role, avatar } = member;
 
   return (
-    <Card key={name} sx={{ p: 1 }}>
+    <Card key={name} sx={{ p: 1, display: "flex", alignItems: "center", flexDirection: "column" }}>
       <Typography variant="subtitle1" sx={{ mt: 2, mb: 0.5 }}>
         {name}
       </Typography>
       <Typography variant="body2" sx={{ mb: 2, color: "text.secondary" }}>
         {role}
       </Typography>
-      <Image alt={name} src={avatar} ratio="1/1" sx={{ borderRadius: 1.5 }} />
+      <img
+        alt={name}
+        src={avatar}
+        sx={{ borderRadius: 1.5 }}
+        style={{
+          height: "300px",
+          width: "300px",
+          objectFit: "cover",
+          objectPosition: "center",
+          borderRadius: "10px",
+        }}
+      />
       <Stack alignItems="center" sx={{ mt: 2, mb: 1 }}>
         <SocialsButton sx={{ color: "action.active" }} />
       </Stack>

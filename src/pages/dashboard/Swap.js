@@ -2,6 +2,7 @@ import { Button, Card, Grid, Box, MenuItem, TextField, Typography } from "@mui/m
 import { useWeb3React } from "@web3-react/core";
 import React, { useState, useEffect } from "react";
 import { useTheme, styled } from "@mui/material/styles";
+import { LoadingButton } from "@mui/lab";
 import SwapFrom from "../../sections/@dashboard/general/swap/SwapFrom";
 import SwapTo from "../../sections/@dashboard/general/swap/SwapTo";
 import Label from "../../components/Label";
@@ -29,7 +30,7 @@ const Swap = () => {
 
     if (active) {
       const fromTokenContract = await new library.eth.Contract(wbnb.abi, fromToken);
-      setFromTokenContract(fromTokenContract);
+      await setFromTokenContract(fromTokenContract);
       checkBalance();
       const gas = await library.eth.getGasPrice();
       setGas(gas);
@@ -37,12 +38,17 @@ const Swap = () => {
   }, [fromToken]);
 
   const checkBalance = async () => {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const balance = await fromTokenContract.methods.balanceOf(account).call();
-    setBalance(library.utils.fromWei(balance));
-    setLoading(false);
-    console.log(balance, fromToken);
+      const balance = await fromTokenContract.methods.balanceOf(account).call();
+      setBalance(library.utils.fromWei(balance));
+      setLoading(false);
+      console.log(balance, fromToken);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
   };
 
   const onAddCurrency = () => {
@@ -107,38 +113,57 @@ const Swap = () => {
   };
 
   const approve = async (currArr, disArr) => {
-    await fromTokenContract.methods
-      .approve(SWAP, library.utils.toWei("15000000"))
-      .send({ from: account })
-      .on("receipt", (hash) => {
-        console.log(hash);
-        if (hash.status === true) {
-          // swap();
-          invest(currArr, disArr);
-        }
-      });
+    try {
+      setLoading(true);
+      await fromTokenContract.methods
+        .approve(SWAP, library.utils.toWei("15000000"))
+        .send({ from: account })
+        .on("receipt", (hash) => {
+          console.log(hash);
+          if (hash.status === true) {
+            // swap();
+            invest(currArr, disArr);
+          }
+        });
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
   };
 
   const invest = async (currArr, disArr) => {
-    const swapContract = new library.eth.Contract(swap.abi, SWAP);
-    const estimateGas = swapContract.methods
-      .swapOneForMany(library.utils.toWei(fromAmount), fromToken, currArr, disArr)
-      .estimateGas({
-        from: account,
-        gasPrice: gas,
-      });
-    setEstimateGas(estimateGas);
-    swapContract.methods
-      .swapOneForMany(library.utils.toWei(fromAmount), fromToken, currArr, disArr)
-      .send({ from: account })
-      .on("receipt", async (hash) => {
-        console.log("done");
-      });
+    try {
+      setLoading(true);
+      const swapContract = new library.eth.Contract(swap.abi, SWAP);
+      const estimateGas = swapContract.methods
+        .swapOneForMany(library.utils.toWei(fromAmount), fromToken, currArr, disArr)
+        .estimateGas({
+          from: account,
+          gasPrice: gas,
+        });
+      setEstimateGas(estimateGas);
+      swapContract.methods
+        .swapOneForMany(library.utils.toWei(fromAmount), fromToken, currArr, disArr)
+        .send({ from: account })
+        .on("receipt", async (hash) => {
+          console.log("done", hash);
+          setLoading(false);
+        });
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
   };
 
   const checkAllowance = async (token, spender, owner) => {
-    const isAllowed = await token.methods.allowance(owner, spender).call();
-    return isAllowed;
+    try {
+      const isAllowed = await token.methods.allowance(owner, spender).call();
+      return isAllowed;
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
   };
 
   return (
@@ -152,48 +177,53 @@ const Swap = () => {
       }}
     >
       {active === true ? (
-        <Card sx={{ width: "500px", padding: "20px" }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <SwapFrom
-                fromToken={fromToken}
-                balance={balance}
-                fromAmount={fromAmount}
-                fromTokenContract={fromTokenContract}
-                loading={loading}
-                setBalance={setBalance}
-                setFromAmount={setFromAmount}
-                setFromToken={setFromToken}
-                setFromTokenContract={setFromTokenContract}
-                setLoading={setLoading}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <SwapTo
-                currencyToArray={currencyToArray}
-                setPercent={setPercent}
-                setCurrency={setCurrency}
-                onAddCurrency={onAddCurrency}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Card sx={{ padding: "20px", boxShadow: "none", border: `0.5px solid ${theme.palette.primary.main}` }}>
-                <Grid container spacing={1}>
-                  <Grid item xs={12}>
-                    <Label color="info" size="large">
-                      Gas : {gas}
-                    </Label>
+        <Box>
+          {/* <Typography variant="h6" sx={{ fontWeight: "bold", padding: "10px 0px", color: "red" }}>
+            This feature is under development and is available to test on the Binance Smart Chain Testnet only.
+          </Typography> */}
+          <Card sx={{ width: "500px", padding: "20px" }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <SwapFrom
+                  fromToken={fromToken}
+                  balance={balance}
+                  fromAmount={fromAmount}
+                  fromTokenContract={fromTokenContract}
+                  loading={loading}
+                  setBalance={setBalance}
+                  setFromAmount={setFromAmount}
+                  setFromToken={setFromToken}
+                  setFromTokenContract={setFromTokenContract}
+                  setLoading={setLoading}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <SwapTo
+                  currencyToArray={currencyToArray}
+                  setPercent={setPercent}
+                  setCurrency={setCurrency}
+                  onAddCurrency={onAddCurrency}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Card sx={{ padding: "20px", boxShadow: "none", border: `0.5px solid ${theme.palette.primary.main}` }}>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <Label color="info" size="large">
+                        Gas : {gas}
+                      </Label>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <LoadingButton loading={loading} variant="contained" size="large" fullWidth onClick={onSwap}>
+                        Swap
+                      </LoadingButton>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Button variant="contained" size="large" fullWidth onClick={onSwap}>
-                      Swap
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Card>
+                </Card>
+              </Grid>
             </Grid>
-          </Grid>
-        </Card>
+          </Card>
+        </Box>
       ) : (
         <ConnectComponent />
       )}

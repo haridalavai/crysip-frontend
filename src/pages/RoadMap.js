@@ -16,6 +16,7 @@ const RootStyle = styled("div")(({ theme }) => ({
 }));
 
 const RoadMap = () => {
+  const a = 10;
   return (
     <Page title="About us">
       <RootStyle>
@@ -31,7 +32,7 @@ const RoadMap = () => {
               boxShadow: " 2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
             }}
             // contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-            date="2011 - present"
+            date="Q4-2022"
             // iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           >
             <Card
@@ -39,72 +40,114 @@ const RoadMap = () => {
                 padding: 2,
               }}
             >
-              <h3 className="vertical-timeline-element-title">Content</h3>
-              <h4 className="vertical-timeline-element-subtitle">Subtitle</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo,
+                1. Brainstorming and Ideation.
+                <br /> 2. Crypot smart contracts on BSC testnet (POC).
+                <br /> 3. Front end application for users to invest in Crypot.
               </p>
             </Card>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2010 - 2011"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            // className="vertical-timeline-element--work"
+            contentStyle={{
+              // background: "rgb(33, 150, 243)",
+              // color: "#fff",
+              padding: "0px 0px 0px 0px",
+              borderRadius: "20px",
+              border: "none",
+              boxShadow: " 2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+            }}
+            // contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+            date="Q1-2023"
+            // iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           >
-            <h3 className="vertical-timeline-element-title">Art Director</h3>
-            <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-            <p>Creative Direction, User Experience, Visual Design, SEO, Online Marketing</p>
+            <Card
+              sx={{
+                padding: 2,
+              }}
+            >
+              <p>1. Investment workshop, certification courses and crypto trading tips to build community.</p>
+            </Card>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2008 - 2010"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            // className="vertical-timeline-element--work"
+            contentStyle={{
+              // background: "rgb(33, 150, 243)",
+              // color: "#fff",
+              padding: "0px 0px 0px 0px",
+              borderRadius: "20px",
+              border: "none",
+              boxShadow: " 2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+            }}
+            // contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+            date="Q2-2023"
+            // iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-            <p>User Experience, Visual Design</p>
+            <Card
+              sx={{
+                padding: 2,
+              }}
+            >
+              <p>
+                1. Mainnet Beta launch on BSC, Matic and Etherium chain.
+                <br />
+                2. P/L and Notification Engine.
+                <br /> 3. Public Sale and TGE (based on market conditions).
+              </p>
+            </Card>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            className="vertical-timeline-element--work"
-            date="2006 - 2008"
-            iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+            // className="vertical-timeline-element--work"
+            contentStyle={{
+              // background: "rgb(33, 150, 243)",
+              // color: "#fff",
+              padding: "0px 0px 0px 0px",
+              borderRadius: "20px",
+              border: "none",
+              boxShadow: " 2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+            }}
+            // contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+            date="Q3-2023"
+            // iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           >
-            <h3 className="vertical-timeline-element-title">Web Designer</h3>
-            <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-            <p>User Experience, Visual Design</p>
+            <Card
+              sx={{
+                padding: 2,
+              }}
+            >
+              <p>
+                1. Crypot Launch on BSC, Matic and Ethereum chains.
+                <br /> 2. Tax Estimation Feature according to govt Norms.
+                <br /> 3. Integrate with Lending and staking Platfrom.
+              </p>
+            </Card>
           </VerticalTimelineElement>
           <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="April 2013"
-            iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
+            // className="vertical-timeline-element--work"
+            contentStyle={{
+              // background: "rgb(33, 150, 243)",
+              // color: "#fff",
+              padding: "0px 0px 0px 0px",
+              borderRadius: "20px",
+              border: "none",
+              boxShadow: " 2px 2px 2px 2px rgba(0, 0, 0, 0.2)",
+            }}
+            // contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+            date="Q4-2023"
+            // iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           >
-            <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-            <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-            <p>Strategy, Social Media</p>
+            <Card
+              sx={{
+                padding: 2,
+              }}
+            >
+              <p>
+                1. Support other Chains including Non-EVM.
+                <br /> 2. Add Support for ETFs.
+                <br /> 3. Inhouse LP Pool.
+              </p>
+            </Card>
           </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="November 2012"
-            iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-          >
-            <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-            <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-            <p>Creative Direction, User Experience, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement
-            className="vertical-timeline-element--education"
-            date="2002 - 2006"
-            iconStyle={{ background: "rgb(233, 30, 99)", color: "#fff" }}
-          >
-            <h3 className="vertical-timeline-element-title">
-              Bachelor of Science in Interactive Digital Media Visual Imaging
-            </h3>
-            <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-            <p>Creative Direction, Visual Design</p>
-          </VerticalTimelineElement>
-          <VerticalTimelineElement iconStyle={{ background: "rgb(16, 204, 82)", color: "#fff" }} />
         </VerticalTimeline>
       </RootStyle>
     </Page>
